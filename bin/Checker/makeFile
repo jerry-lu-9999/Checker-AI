@@ -1,0 +1,28 @@
+JFLAGS = -g
+JC = javac
+JVM = java
+FILE = 
+
+.SUFFIXES: .java .class
+
+.java.class:
+	$(JC)$(JFLAGS) $*.java
+
+CLASSES = \
+	Actions.java \
+	Board.java \
+	Checker.java \
+	Gameplay.java \
+	Pawn.java
+
+MAIN = Checker
+
+default: classes
+
+Classes: $(CLASSES:.java=.class)
+
+run: $(MAIN).class
+	$(JVM)$(MAIN)
+
+clean:
+	$(RM) *.class
